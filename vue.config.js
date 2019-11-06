@@ -81,7 +81,7 @@ module.exports = {
         host: 'localhost',
         proxy: {
             '/openidm': {
-                target: 'http://localhost:8080/openidm',
+                target: 'http://172.18.69.135:8080/openidm',
                 pathRewrite: { '^/openidm': '' },
                 changeOrigin: true
             }

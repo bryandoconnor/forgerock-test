@@ -1,60 +1,96 @@
 <template>
     <div id="app">
+
+
+
         <div id="wrapper" :class="[{'toggled': toggled && !this.$route.meta.hideToolbar}]">
-            <div id="appSidebarWrapper" v-if="!this.$route.meta.hideToolbar && this.$root.userStore.state.userId !== null">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        <router-link class="d-flex" active-class=""  :to="{ name: 'Dashboard'}">
-                            <img :src="require('@/assets/images/horizontal-logo-white.svg')" :alt="$t('common.form.logo')" style="width:131px;" class="align-self-center sidebar-brand-logo" />
-                            <img :src="require('@/assets/images/vertical-logo-white.svg')" :alt="$t('common.form.logo')"  style="height:28px;" class="align-self-center sidebar-brand-mark" />
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link  :to="{ name: 'Dashboard'}"><i class="fa fa-fw mr-3 fa-tachometer-alt"></i><span class="sidebar-item-text">{{$t('pages.app.dashboard')}}</span></router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{ name: 'Profile'}"><i class="fa fa-fw mr-3 fa-street-view"></i><span class="sidebar-item-text">{{$t('pages.app.profile')}}</span></router-link>
-                    </li>
-                    <li v-if="$root.applicationStore.state.amDataEndpoints && this.$root.userStore.state.internalUser === false">
-                        <router-link :to="{ name: 'Sharing'}"><i class="fa fa-fw mr-3 fa-share"></i><span class="sidebar-item-text">{{$t('pages.app.sharing')}}</span></router-link>
-                    </li>
-                    <template v-for="(access, index) in this.$root.userStore.state.access">
-                        <li :key="'accessResource' +index">
-                            <router-link :to="{ name: 'ListResource', meta: { title: 'User'}, params: { resourceType: access.privilegePath.split('/')[0],  resourceName: access.privilegePath.split('/')[1]}}"><i :class="accessIcon(access.icon)"></i><span class="sidebar-item-text">{{access.title}}</span></router-link>
-                        </li>
-                    </template>
-                </ul>
-            </div>
+
+
             <div id="appContentWrapper" :class="[{'fr-no-toolbar': this.$route.meta.hideToolbar}]">
-                <!--
-                Navigation Bar using Vue Route + Bootstrap Toolbar
-                -->
-                <b-navbar v-if="!this.$route.meta.hideToolbar && this.$root.userStore.state.userId !== null" class="fr-main-navbar">
-                    <b-nav-form>
-                        <b-button variant="link" class="my-2 my-sm-0 p-0 fr-main-nav-toggle" type="button" @click="onToggle">
-                            <i class="fa fa-bars fa-lg m-0"></i>
-                        </b-button>
-                    </b-nav-form>
-                    <b-navbar-brand class="ml-4" v-if="this.$route.params.resourceName">{{this.$route.params.resourceName | capitalize}}</b-navbar-brand>
-                    <!-- Right aligned nav items -->
-                    <b-navbar-nav class="ml-auto flex-row">
-                        <fr-notification></fr-notification>
-                        <b-nav-item-dropdown class="fr-main-dropdown" right>
-                            <template slot="button-content">
-                                {{$t('pages.app.user')}} <b-img :src="require('@/assets/images/profile-default.png')" rounded="circle" width="24" height="24" alt="img" class="m-1" />
-                            </template>
-                            <b-dropdown-item active-class="fr-no-active" exact-active-class="fr-no-active" :to="{ name: 'Profile'}">{{$t('pages.app.profile')}}</b-dropdown-item>
-                            <b-dropdown-item v-if="this.$root.userStore.state.adminUser" href="/admin/">{{$t('pages.app.admin')}}</b-dropdown-item>
-                            <b-dropdown-divider class="m-0"></b-dropdown-divider>
-                            <b-dropdown-item @click.prevent="logoutUser()">{{$t('pages.app.signOut')}}</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                    </b-navbar-nav>
-                </b-navbar>
-                <transition name="fade" mode="out-in">
-                    <router-view :key="this.$route.fullPath"></router-view>
-                </transition>
+
+
+              <div class="bg-header col-md-10 col-sm-12 offset-md-1 offset-sm-0 no-padding px-5 py-2">
+
+                <div class="container-fluid no-padding no-margin">
+                  <div class="row no-padding no-margin full-width">
+
+                    <div class="col-12 no-padding no-margin">
+
+                        <div class="row no-padding no-margin full-width">
+
+                          <div class="col-lg-auto col-md-12 no-padding no-margin d-block d-md-block">
+                            <a href="/login" title="Password Reset Logo">
+                              <img alt="This is a Logo" :src="require('@/assets/images/logo.svg')" class="header-image" />
+                            </a>
+                          </div>
+
+                          <div class="col-auto d-block d-md-block no-padding no-margin icon-tray abs-right">
+
+                            <a href="/contact" class="add-height">
+                              <span class="reset-nav-icons">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                            <a href="/" class="add-height">
+                              <span class="reset-nav-icons">
+                                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                              </span>
+                            </a>
+
+                          </div>
+
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+              <transition name="fade" mode="out-in">
+                  <router-view :key="this.$route.fullPath"></router-view>
+              </transition>
+
+
+
             </div>
+
+
+            <footer class="col-md-10 col-sm-12 offset-md-1 offset-sm-0 bg-header py-5 text-white-50">
+                <div class="container-fluid">
+
+                    <div class="row px-5">
+
+                        <div class="col-md-6 col-sm-12 footer-center">
+                          <div class="py-2"><a href="/contact-us" class="link-white">Contact</a></div>
+                          <div class="py-2"><a href="/help" class="link-white">Help</a></div>
+                          <div class="py-2"><a href="/" class="link-white">Online Privacy Statement</a></div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <div class="center"><h4 class="text-white">Secured Site <i class="fa fa-lock" aria-hidden="true"></i></h4></div>
+                            <div class="center py-3">
+                              <img alt="This is a Logo" :src="require('@/assets/images/logo.svg')" class="footer-image" />
+                            </div>
+                            <div class="d-block center">
+                              <span>A division of Zions Bancorporation, N.A., Member FDIC</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </footer>
+
+
         </div>
+
+
+
+
         <!--
           Application View
         -->
@@ -125,6 +161,7 @@ export default {
     // Currently variable and theming loaded through node
     @import "~bootstrap/scss/bootstrap.scss";
     @import "scss/main.scss";
+    @import "scss/pw-reset.scss";
     @import "~bootstrap-vue/dist/bootstrap-vue.css";
     @import "~@fortawesome/fontawesome-free/css/all.css";
 
@@ -197,7 +234,7 @@ export default {
             }
 
             #appContentWrapper {
-                height: 100%;
+                // height: 100%;
                 -webkit-transition: all 0.2s ease;
                 -moz-transition: all 0.2s ease;
                 -o-transition: all 0.2s ease;

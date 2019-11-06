@@ -108,6 +108,12 @@ export default new Router({
             meta: { hideToolbar: true, bodyClass: 'fr-body-image' }
         },
         {
+            path: '/passwordreset2',
+            name: 'PasswordReset2',
+            component: () => import('@/components/selfservice/passwordreset2'),
+            meta: { hideToolbar: true, bodyClass: 'fr-body-image' }
+        },
+        {
             path: '/passwordreset/:queryParams',
             name: 'PasswordResetForm',
             component: () => import('@/components/selfservice/passwordreset'),
