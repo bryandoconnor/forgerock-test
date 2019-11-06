@@ -1,5 +1,68 @@
 <template>
-    <fr-center-card :showLogo="true">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-12 col-md-10 offset-md-1">
+        <div>
+          <div class="login-heading-lg">
+            <h1 class="my-3">Welcome to the new Treasury Gateway<i class="fa fa-registered" aria-hidden="true" style="font-size:12px;"></i></h1>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="login-box">
+                <form>
+
+                  <div class="login-heading-md">Username</div>
+
+                  <input class="login-input" type='Sign In' name='username' :reveal="true" />
+
+                  <div class="login-heading-md">Password
+                    <span class="question-icon">
+                      <i class="fa fa-question-circle question-icon" aria-hidden="true"></i>
+                    </span>
+                  </div>
+
+                  <input class="login-input" type='Sign In' name='password'
+                  />
+
+                  <div class="btn login-button bg-header text-white">NEXT</div>
+                  
+                  <div class="center">
+                    <a class="forgot-pw-link" href="/#/passwordreset">Forgot Password</a>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6 get-started-box my-2">
+              <h3 class="my-1">First Time Here?</h3>
+              <h4 class="my-2">To setup your new account you will need:</h4>
+              <div>
+                <i class="fa fa-check" aria-hidden="true" style="color:#64b828; font-size: 25px;"></i>
+                <span class="login-text mb-2 ml-3">All usernames and passwords you receive by email or from your company admin (for each service)</span>
+              </div>
+              <div>
+                <i class="fa fa-check" aria-hidden="true" style="color:#64b828; font-size: 25px;"></i>
+                <span class="login-text mb-2 ml-3">Your mobile device if you received instructions for an RSA Token or the physical RSA Token</span>
+              </div>
+              <div class="center">
+                <div class="btn get-started-button my-2">GET STARTED</div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <!-- <fr-center-card :showLogo="true">
         <div slot="center-card-header">
             <h2 class="h2">{{$t('pages.login.signIn')}}</h2>
         </div>
@@ -35,7 +98,7 @@
                 <router-link action="" :to="{name: 'Registration'}">{{$t('pages.login.createAccount')}}</router-link>
             </b-card-footer>
         </template>
-    </fr-center-card>
+    </fr-center-card> -->
 </template>
 
 <script>

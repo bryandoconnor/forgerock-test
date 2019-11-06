@@ -1,9 +1,7 @@
 <template>
     <div id="app">
 
-
-
-        <div id="wrapper" :class="[{'toggled': toggled && !this.$route.meta.hideToolbar}]">
+        <div id="wrapper" :class="[{'toggled': toggled && !this.$route.meta.hideToolbar}]" style="background-color: #fff;">
 
 
             <div id="appContentWrapper" :class="[{'fr-no-toolbar': this.$route.meta.hideToolbar}]">
@@ -234,7 +232,7 @@ export default {
             }
 
             #appContentWrapper {
-                // height: 100%;
+                background-color: #fff;
                 -webkit-transition: all 0.2s ease;
                 -moz-transition: all 0.2s ease;
                 -o-transition: all 0.2s ease;

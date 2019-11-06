@@ -33,8 +33,26 @@ body {
   object-fit: scale-down;
   width: 300px;
 }
+.forgot-pw-link {
+  color: #373a3c;
+  margin: 10px 0px;
+}
+.forgot-pw-link:hover {
+  color: purple;
+  text-decoration: none;
+}
 .full-width {
   width: 100%;
+}
+.get-started-button {
+  background-color: #888;
+  color: #fff;
+  padding: 5px 15px;
+}
+.get-started-button:hover {
+  color: #fff;
+  background-color: #64b828;
+  cursor: pointer;
 }
 .header-image {
   height: auto;
@@ -51,11 +69,45 @@ body {
 .link-white:hover {
   color: #64b828;
 }
+.login-box {
+  background-color: #f7f8f9;
+  height: 325px;
+  margin: auto;
+  padding: 30px;
+  width: 364px;
+}
+.login-button {
+  border-radius: 4px;
+  height: 40px;
+  margin: 20px 0px 10px 0px;
+  width: 302px;
+}
+.login-button:hover {
+  background-color: #64b828;
+  cursor: pointer;
+}
+.login-heading-lg {
+  text-align: left;
+}
+.login-heading-md {
+  font-size: 14px;
+  font-weight: 400;
+}
+.login-input {
+  height: 40px;
+  margin: 8px 0px;
+  width: 302px;
+}
 .no-padding {
   padding: 0px;
 }
 .no-margin {
   margin: 0px;
+}
+.question-icon {
+  float: right;
+  padding-right: 5px;
+  line-height: 22px;
 }
 .reset-nav-icons {
   color: #fff;
@@ -68,6 +120,9 @@ body {
 @media (max-width: 767px) {
   .footer-center {
     margin-bottom: 20px;
+    text-align: center;
+  }
+  .login-heading-lg {
     text-align: center;
   }
 }
